@@ -1,14 +1,14 @@
-# Проект "Habit_tracker" - Трекер привычек
+# Проект "access_request" - Веб-приложение подачи заявок на предоставление доступа к информационным системам (ИС) 
 
 ## Описание:
- Проект "Habit_tracker" - это проект на Python, 
- передставляющи собой трекер привычек
+ Проект "access_request" - это проект на Python, 
+ передставляющий собой веб-приложение подачи заявок на предоставление доступа к информационным системам
  
  
 ## Установка:
  1. Клонируйте репозиторий:
  ```
- git clone https://github.com/Irina-Sudeykina/Habit_tracker.git
+ git clone https://github.com/Irina-Sudeykina/access_request.git
  
  ```
 
@@ -123,7 +123,7 @@ python manage.py runserver
 ### Запуск через виртуальную машину:
 ```
 ssh -i .ssh\adminsia adminsia@158.160.178.115
-cd ~/Habit_tracker
+cd ~/access_request
 ```
 В браузере:
 ```
@@ -132,7 +132,7 @@ http://158.160.178.115/admin/
 
 ### 1. Склонируйте репозиторий проекта:
 ```
-git clone https://github.com/Irina-Sudeykina/Habit_tracker.git
+git clone https://github.com/Irina-Sudeykina/access_request.git
 cd project
 ```
 
