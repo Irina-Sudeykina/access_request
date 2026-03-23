@@ -52,6 +52,20 @@ Django = ">=5.2"
 drf = ["djangorestframework"]
 
 [[package]]
+name = "django-smart-selects"
+version = "1.7.2"
+description = "Django application to handle chained model fields."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_smart_selects-1.7.2-py3-none-any.whl", hash = "sha256:08c774d96285e6d169043cd548860d74d085be8d349c42437232c42bc43cd79a"},
+    {file = "django_smart_selects-1.7.2.tar.gz", hash = "sha256:c8116718ecf2d0d0fd4cd1e52c26d2dcc586e25319aa65af7af2d51a1012df3a"},
+]
+
+[package.dependencies]
+django = ">=3.2"
+
+[[package]]
 name = "djangorestframework"
 version = "3.17.0"
 description = "Web APIs for Django, made easy."
@@ -292,4 +306,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "0c3d4544f70c82357ad2265a11e186c783e685d0feab5f545e9ba70f55b32ae7"
+content-hash = "02e2961dfb21ff78355c43a3e84479549b8c189507d15718a4608fe7e9dc43c3"

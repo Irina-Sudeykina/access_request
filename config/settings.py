@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "django_filters",
+    "smart_selects",
     "users",
+    "mis",
 ]
 
 MIDDLEWARE = [
@@ -124,6 +126,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = "users:login"
+
+USE_DJANGO_JQUERY = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
