@@ -1,0 +1,48 @@
+{% extends 'mis/base.html' %}
+{% load static %}
+
+{% block content %}
+<br/>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form class="row" method="post" enctype="multipart/form-data">
+                <div class="card">
+                    {% if object %}
+                    <h3 class="card-text ms-3 mt-3">Редактирование заявки</h3>
+                    {% else %}
+                    <h3 class="card-text ms-3 mt-3">Создание заявки на предоставление доступа</h3>
+                    {% endif %}  
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.none_field_errors }}
+                        {{ form.as_p }}
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    {% if object %}
+                                    Сохранить
+                                    {% else %}
+                                    Подать заявку на доступ
+                                    {% endif %}
+                                </button>
+                                <a class="btn btn-outline-danger" href="{% url 'mis:accessrequest_list' %}" >Отменить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ПОДКЛЮЧАЕМ СКРИПТЫ -->
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bindfields.js' %}"></script>
+<script src="{% static 'js/chainedfk.js' %}"></script>
+<script src="{% static 'js/chainedm2m.js' %}"></script>
+
+{% endblock %}

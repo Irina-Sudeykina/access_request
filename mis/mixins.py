@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import AccessMixin
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.models import Group
 
+
 class ApprovalPermissionMixin(AccessMixin):
     """
     Миксин для проверки прав на согласование заявки.

@@ -94,7 +94,7 @@ class AccessRequest(models.Model):
     supervisor = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
-        blank=True,
+        blank=False,
         null=True,
         related_name="supervisor_access_request",
         verbose_name="Непосредственный руководитель",

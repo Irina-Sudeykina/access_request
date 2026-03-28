@@ -6,13 +6,13 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.core.mail import send_mail
 from django.conf import settings
-from django.views.generic import ListView, View
+from django.views.generic import CreateView, ListView, View
 from django.views.generic.detail import SingleObjectMixin
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
+from mis.forms import AccessRequestForm
 from mis.mixins import ApprovalPermissionMixin
 from mis.models import InformationSystem, InformationSystemRole, AccessRequest
-from mis.serializers import InformationSystemSerializer, InformationSystemRoleSerializer, AccessRequestSerializer
 from users.permissions import isOwner
 from dotenv import load_dotenv
 
@@ -175,3 +175,16 @@ class ApprovedIBView(ApprovalActionView):
 class RejectedIBView(ApprovalActionView):
     def update_status(self):
         self.object.approved_status_ib_is = "rejected"
+
+
+class AccessRequestCreateView(CreateView):
+    model = AccessRequest
+    form_class = AccessRequestForm
+    success_url = reverse_lazy("mis:accessrequest_list")
+
+    def form_valid(self, form):
+        accessrequest = form.save()
+        user = self.request.user
+        accessrequest.owner = user
+        accessrequest.save()
+        return super().form_valid(form)
