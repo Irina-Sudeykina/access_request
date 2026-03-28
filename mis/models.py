@@ -10,7 +10,7 @@ class InformationSystem(models.Model):
     owner = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
-        blank=True,
+        blank=False,
         null=True,
         related_name="owned_is",
         verbose_name="Пользователь",

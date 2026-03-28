@@ -7,6 +7,9 @@ from mis.models import InformationSystem, InformationSystemRole, AccessRequest
 
 
 class StyleFormMixin:
+    """
+    Форма для красивого отображения
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
@@ -20,7 +23,6 @@ class AccessRequestForm(StyleFormMixin, forms.ModelForm):
     """
     Форма для создания новой заявки на предоставления доступа
     """
-
     class Meta:
         model = AccessRequest
         exclude = ("owner",)
@@ -76,3 +78,58 @@ class AccessRequestForm(StyleFormMixin, forms.ModelForm):
             except (ValueError, TypeError):
                 # Если ID невалидный, оставляем поле пустым
                 pass
+
+
+class InformationSystemForm(StyleFormMixin, forms.ModelForm):
+    """
+    Форма для создания новой ИС
+    """
+    class Meta:
+        model = InformationSystem
+        fields = ['title', 'owner']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Проходим по всем полям формы и удаляем их подсказки
+        for field in self.fields.values():
+            field.help_text = None
+
+        # --- Фильтр для поля 'owner' ---
+        try:
+            # 1. Находим группу "Admins"
+            admins_group = Group.objects.get(name="Admins")
+            
+            # 2. Получаем базовый QuerySet для поля owner
+            queryset = self.fields['owner'].queryset
+
+            # 3. Исключаем пользователей, которые ИЛИ в группе Admins, ИЛИ являются суперпользователями
+            # Q-объекты позволяют использовать логическое ИЛИ (|) в фильтре
+            queryset = queryset.exclude(
+                Q(groups=admins_group) | Q(is_superuser=True)
+            )
+
+            # 4. Заменяем стандартный список пользователей на отфильтрованный
+            self.fields['owner'].queryset = queryset
+
+        except Group.DoesNotExist:
+            # Если группы "Admins" нет, исключаем только суперпользователей
+            self.fields['owner'].queryset = self.fields['owner'].queryset.exclude(
+                is_superuser=True
+            )
+
+
+class InformationSystemRoleForm(StyleFormMixin, forms.ModelForm):
+    """
+    Форма для создания новой роли в ИС
+    """
+    class Meta:
+        model = InformationSystemRole
+        fields = ['title', 'information_system']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Проходим по всем полям формы и удаляем их подсказки
+        for field in self.fields.values():
+            field.help_text = None

@@ -1,0 +1,45 @@
+{% extends 'mis/base.html' %}
+{% load my_tags %}
+
+{% block header %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <!-- <h1 class="display-4">Сервис подачи заявок на предоставление доступа к ИС</h1> -->
+    <p><a class="btn btn-outline-primary" href="{% url 'mis:informationsystem_create' %}" role="button">Добавить Информационную систему</a></p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h3>Информационные системы</h3>
+        <br/>
+        <table class="table">
+          <thead>
+            <tr class="align-middle">
+              <th scope="col">id</th>
+              <th scope="col">Наименование ИС</th>
+              <th scope="col">Владелец ИС</th>
+              <th scope="col">Должность</th>
+              <th scope="col">Телефон</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            {% for obj in object_list %}
+            <tr class="align-middle">
+              <th scope="row">{{ obj.id }}</th>
+              <td>{{ obj.title }}</td>
+              <td>{{ obj.owner.fullname }}</td>
+              <td>{{ obj.owner.position }}</td>
+              <td>{{ obj.owner.phone }}</td>
+              <td class="text-center">
+				<a class="btn btn-outline-primary btn-sm" href="{% url 'mis:informationsystem_update' obj.pk %}" role="button">Изменить</a>
+                <a class="btn btn-outline-danger btn-sm" href="{% url 'mis:informationsystem_delete' obj.pk %}" role="button">Удалить</a>
+			  </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

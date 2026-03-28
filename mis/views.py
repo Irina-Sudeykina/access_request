@@ -6,13 +6,14 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.core.mail import send_mail
 from django.conf import settings
-from django.views.generic import CreateView, ListView, View
+from django.views.generic import CreateView, ListView, View, UpdateView, DeleteView
 from django.views.generic.detail import SingleObjectMixin
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
-from mis.forms import AccessRequestForm
+from mis.forms import AccessRequestForm, InformationSystemForm, InformationSystemRoleForm
 from mis.mixins import ApprovalPermissionMixin
 from mis.models import InformationSystem, InformationSystemRole, AccessRequest
+from mis.services import AccessRequestService
 from users.permissions import isOwner
 from dotenv import load_dotenv
 
@@ -20,6 +21,9 @@ load_dotenv(override=True)
 
 
 class AccessRequestListView(LoginRequiredMixin, ListView):
+    """
+    Список заявок на доступ, созданных пользователем и статистика
+    """
     model = AccessRequest
     template_name = "mis/accessrequest_list.html"
     login_url = '/users/login/' # Укажите точный URL входа (или имя url)
@@ -28,8 +32,28 @@ class AccessRequestListView(LoginRequiredMixin, ListView):
         # Возвращаем только заявки текущего пользователя
         return AccessRequest.objects.filter(owner=self.request.user).order_by('-created_at')
 
+    def get_context_data(self, **kwargs):
+        # 1. Получаем стандартный контекст
+        context = super().get_context_data(**kwargs)
+
+        # 2. Добавляем в него переменные статистики
+        access_request_count = AccessRequestService.get_access_request_count()
+        active_access_request_count = AccessRequestService.get_active_access_request_count()
+        approved_access_request_count = AccessRequestService.get_approved_access_request_count()
+        rejected_access_request_count = AccessRequestService.get_rejected_access_request_count()
+
+        context['access_request_count'] = access_request_count
+        context['active_access_request_count'] = active_access_request_count
+        context['approved_access_request_count'] = approved_access_request_count
+        context['rejected_access_request_count'] = rejected_access_request_count
+
+        return context
+
 
 class AccessSuccessListView(ListView):
+    """
+    Список заявок на согласование
+    """
     model = AccessRequest
     template_name = "mis/accesssuccess_list.html"
 
@@ -102,24 +126,36 @@ class ApprovalActionView(ApprovalPermissionMixin, SingleObjectMixin, View):
 
 
 class ApprovedSupervisorView(ApprovalActionView):
+    """
+    Класс для согласования заявки непосредственным руководителем
+    """
     def update_status(self):
         self.object.approved_status_supervisor_is = "approved"
         self.object.save()
 
 
 class RejectedSupervisorView(ApprovalActionView):
+    """
+    Класс для отклонения заявки непосредственным руководителем
+    """
     def update_status(self):
         self.object.approved_status_supervisor_is = "rejected"
         self.object.save()
 
 
 class ApprovedOwnerView(ApprovalActionView):
+    """
+    Класс для согласования заявки владельцем ИС
+    """
     def update_status(self):
         self.object.approved_status_owner_is = "approved"
         self.object.save()
 
 
 class RejectedOwnerView(ApprovalActionView):
+    """
+    Класс для отклонения заявки владельцем ИС
+    """
     def update_status(self):
         self.object.approved_status_owner_is = "rejected"
         self.object.save()
@@ -173,11 +209,17 @@ class ApprovedIBView(ApprovalActionView):
 
 
 class RejectedIBView(ApprovalActionView):
+    """
+    Класс для отклонения заявки сотрудником ИБ
+    """
     def update_status(self):
         self.object.approved_status_ib_is = "rejected"
 
 
 class AccessRequestCreateView(CreateView):
+    """
+    Класс для создания новой заявки на предоставление доступа
+    """
     model = AccessRequest
     form_class = AccessRequestForm
     success_url = reverse_lazy("mis:accessrequest_list")
@@ -188,3 +230,53 @@ class AccessRequestCreateView(CreateView):
         accessrequest.owner = user
         accessrequest.save()
         return super().form_valid(form)
+
+
+class InformationSystemListView(ListView):
+    """
+    Список информационных систем
+    """
+    model = InformationSystem
+    template_name = "mis/informationsystem_list.html"
+
+
+class InformationSystemCreateView(CreateView):
+    model = InformationSystem
+    form_class = InformationSystemForm
+    success_url = reverse_lazy("mis:informationsystem_list")
+
+
+class InformationSystemUpdateView(UpdateView):
+    model = InformationSystem
+    form_class = InformationSystemForm
+    success_url = reverse_lazy("mis:informationsystem_list")
+
+
+class InformationSystemDeleteView(DeleteView):
+    model = InformationSystem
+    success_url = reverse_lazy("mis:informationsystem_list")
+
+
+class InformationSystemRoleListView(ListView):
+    """
+    Список ролей в информационных системах
+    """
+    model = InformationSystemRole
+    template_name = "mis/informationsystemrole_list.html"
+
+
+class InformationSystemRoleCreateView(CreateView):
+    model = InformationSystemRole
+    form_class = InformationSystemRoleForm
+    success_url = reverse_lazy("mis:informationsystemrole_list")
+
+
+class InformationSystemRoleUpdateView(UpdateView):
+    model = InformationSystemRole
+    form_class = InformationSystemRoleForm
+    success_url = reverse_lazy("mis:informationsystemrole_list")
+
+
+class InformationSystemRoleDeleteView(DeleteView):
+    model = InformationSystemRole
+    success_url = reverse_lazy("mis:informationsystemrole_list")

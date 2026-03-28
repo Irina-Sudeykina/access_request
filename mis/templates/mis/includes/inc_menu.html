@@ -4,11 +4,17 @@
     </a> 
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto"> 
         {% if user.is_authenticated %}
-			<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accessrequest_list' %}">Главная</a> 
-			<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accessrequest_create' %}">Подать заявку</a> 
-			<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accesssuccess_list' %}">Заявки на согласование</a> 
-
-            <form method="post" action="{% url 'users:logout' %}">
+			{% if is_admin %}
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accessrequest_list' %}">Главная</a> 
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:informationsystem_list' %}">Информационные системы</a> 
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:informationsystemrole_list' %}">Роли в ИС</a> 
+			{% else %}
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accessrequest_list' %}">Главная</a> 
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accessrequest_create' %}">Подать заявку</a> 
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accesssuccess_list' %}">Заявки на согласование</a> 
+			{% endif %}
+            
+			<form method="post" action="{% url 'users:logout' %}">
                 {% csrf_token %}
                 <button type="submit" class="me-3 py-2 nav-link text-black"><u>Выход</u></button>
             </form>
