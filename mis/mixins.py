@@ -1,5 +1,4 @@
 from django.contrib.auth.mixins import AccessMixin
-from django.core.exceptions import PermissionDenied
 from django.contrib.auth.models import Group
 
 
@@ -7,6 +6,7 @@ class ApprovalPermissionMixin(AccessMixin):
     """
     Миксин для проверки прав на согласование заявки.
     """
+
     def dispatch(self, request, *args, **kwargs):
         # Получаем объект заявки (он должен быть у view)
         # Для этого view должен наследовать SingleObjectMixin или получать объект другим способом
@@ -28,6 +28,6 @@ class ApprovalPermissionMixin(AccessMixin):
 
         # Если ни одно из условий не выполнено - запрещаем доступ
         if not (is_supervisor or is_owner or is_ib):
-            return self.handle_no_permission() # Вызывает 403 Forbidden
+            return self.handle_no_permission()  # Вызывает 403 Forbidden
 
         return super().dispatch(request, *args, **kwargs)

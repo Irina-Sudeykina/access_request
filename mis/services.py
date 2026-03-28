@@ -1,8 +1,4 @@
-from django.conf import settings
-from django.core.mail import send_mail
-from django.utils.timezone import now as timezone_now
-
-from mis.models import InformationSystem, InformationSystemRole, AccessRequest
+from mis.models import AccessRequest
 
 
 class AccessRequestService:

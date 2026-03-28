@@ -1,6 +1,6 @@
+from django.db import models
 from smart_selects.db_fields import ChainedForeignKey
 
-from django.db import models
 from users.models import User
 
 
@@ -30,9 +30,7 @@ class InformationSystem(models.Model):
 
 class InformationSystemRole(models.Model):
     title = models.CharField(
-        max_length=150, 
-        verbose_name="Наименование роли в ИС", 
-        help_text="Введите наименование роли в ИС"
+        max_length=150, verbose_name="Наименование роли в ИС", help_text="Введите наименование роли в ИС"
     )
 
     information_system = models.ForeignKey(
@@ -59,8 +57,8 @@ class InformationSystemRole(models.Model):
 
 class AccessRequest(models.Model):
     PERMISSION_LEVELS = [
-        ("READ", 'Чтение'),
-        ("WRITE", 'Запись'),
+        ("READ", "Чтение"),
+        ("WRITE", "Запись"),
     ]
 
     APPROVAL_STATUS_CHOICES = [
@@ -68,7 +66,7 @@ class AccessRequest(models.Model):
         ("approved", "Согласовано"),
         ("rejected", "Отклонено"),
     ]
-    
+
     created_at = models.DateField(
         blank=True, auto_now_add=True, verbose_name="Дата создания", help_text="Укажите дату создания"
     )
@@ -108,7 +106,7 @@ class AccessRequest(models.Model):
         verbose_name="Уровень доступа",
         help_text="Укажите уровень доступа",
     )
-    
+
     information_system_role = ChainedForeignKey(
         InformationSystemRole,
         on_delete=models.CASCADE,

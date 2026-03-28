@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from mis.models import InformationSystem, InformationSystemRole, AccessRequest
+from mis.models import AccessRequest, InformationSystem, InformationSystemRole
 
 
 @admin.register(InformationSystem)
@@ -32,32 +32,32 @@ class InformationSystemRoleAdmin(admin.ModelAdmin):
 @admin.register(AccessRequest)
 class AccessRequestAdmin(admin.ModelAdmin):
     list_display = (
-        "id", 
-        "created_at", 
-        "information_system", 
-        "owner", 
-        "permission_level", 
-        "information_system_role", 
+        "id",
+        "created_at",
+        "information_system",
+        "owner",
+        "permission_level",
+        "information_system_role",
         "approved_status_supervisor_is",
         "approved_status_owner_is",
         "approved_status_ib_is",
     )
     list_filter = (
-        "created_at", 
-        "information_system", 
-        "owner", 
-        "permission_level", 
-        "information_system_role", 
+        "created_at",
+        "information_system",
+        "owner",
+        "permission_level",
+        "information_system_role",
         "approved_status_supervisor_is",
         "approved_status_owner_is",
         "approved_status_ib_is",
     )
     search_fields = (
-        "created_at", 
-        "information_system", 
-        "owner", 
-        "permission_level", 
-        "information_system_role", 
+        "created_at",
+        "information_system",
+        "owner",
+        "permission_level",
+        "information_system_role",
         "approved_status_supervisor_is",
         "approved_status_owner_is",
         "approved_status_ib_is",

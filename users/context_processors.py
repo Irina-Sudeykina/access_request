@@ -11,6 +11,4 @@ def user_groups(request):
         is_admin = False
 
     # Возвращаем словарь. Ключ станет именем переменной в шаблоне.
-    return {
-        'is_admin': is_admin
-    }
+    return {"is_admin": is_admin}
