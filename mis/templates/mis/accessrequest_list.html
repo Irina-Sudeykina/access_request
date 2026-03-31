@@ -1,0 +1,127 @@
+{% extends 'mis/base.html' %}
+{% load my_tags %}
+
+{% block header %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <!-- <h1 class="display-4">Сервис подачи заявок на предоставление доступа к ИС</h1> -->
+    
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        {% if is_admin %}
+			<h3>Статистика</h3>
+			<br/>
+			<p>Общее количество всех созданных заявок: {{ access_request_count }}</p>
+			<p>Активных: {{ active_access_request_count }}</p>
+			<p>Согласованных: {{ approved_access_request_count }}</p>
+			<p>Отклоненных: {{ rejected_access_request_count }}</p>
+		{% else %}
+		
+			<h3>Заявки на доступ</h3>
+			<br/>
+			<table class="table">
+			  <thead>
+				<tr class="text-center align-middle">
+				  <th scope="col">id</th>
+				  <th scope="col">Дата подачи заявки</th>
+				  <th scope="col">ИС</th>
+				  <th scope="col" colspan="2">Непосредственный руководитель</th>
+				  <th scope="col" colspan="2">Владелец ИС</th>
+				  <th scope="col">Сотрудник ИБ</th>
+				</tr>
+			  </thead>
+			  <tbody class="table-group-divider">
+				{% for obj in object_list %}
+				<tr class="align-middle">
+				  <th scope="row">{{ obj.id }}</th>
+				  <td class="text-center">{{ obj.created_at|date:"d M Y" }}</td>
+				  <td class="text-center">{{ obj.information_system}}</td>
+				  <td>{{ obj.supervisor }}</td>
+				  <td class="text-center">
+					{% if obj.approved_status_supervisor_is == "approved" %}
+						{# Зеленая галочка (SVG) #}
+						<span class="text-success" title="Согласовано">
+							<svg xmlns="http://www.w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+							</svg>
+						</span>
+					{% elif obj.approved_status_supervisor_is == "rejected" %}
+						{# Красный крестик (SVG) #}
+						<span class="text-danger" title="Отклонено">
+							<svg xmlns="http://www.w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+							</svg>
+						</span>
+					{% else %}
+						{# Серые часы (SVG) #}
+						<span class="text-secondary" title="Ожидает">
+							<svg xmlns="http://www.w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+								<path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+								<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+							</svg>
+						</span>
+					{% endif %}
+				  </td>
+				  <td>{{ obj.information_system.owner }}</td>
+				  <td class="text-center">
+					{% if obj.approved_status_owner_is == "approved" %}
+						{# Зеленая галочка (SVG) #}
+						<span class="text-success" title="Согласовано">
+							<svg xmlns="http://www.w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+							</svg>
+						</span>
+					{% elif obj.approved_status_owner_is == "rejected" %}
+						{# Красный крестик (SVG) #}
+						<span class="text-danger" title="Отклонено">
+							<svg xmlns="http://www.w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+							</svg>
+						</span>
+					{% else %}
+						{# Серые часы (SVG) #}
+						<span class="text-secondary" title="Ожидает">
+							<svg xmlns="http://www.w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+								<path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+								<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+							</svg>
+						</span>
+					{% endif %}
+				  </td>
+				  <td class="text-center">
+					{% if obj.approved_status_ib_is == "approved" %}
+						{# Зеленая галочка (SVG) #}
+						<span class="text-success" title="Согласовано">
+							<svg xmlns="http://www.w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+							</svg>
+						</span>
+					{% elif obj.approved_status_ib_is == "rejected" %}
+						{# Красный крестик (SVG) #}
+						<span class="text-danger" title="Отклонено">
+							<svg xmlns="http://www.w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+							</svg>
+						</span>
+					{% else %}
+						{# Серые часы (SVG) #}
+						<span class="text-secondary" title="Ожидает">
+							<svg xmlns="http://www.w3.org" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+								<path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+								<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+							</svg>
+						</span>
+					{% endif %}
+				  </td>
+				  
+				</tr>
+				{% endfor %}
+			  </tbody>
+			</table>
+		{% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,514 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": "2026-03-28T06:23:14.746Z",
+        "is_superuser": true,
+        "username": "testadmin",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-03-22T09:43:46.576Z",
+        "fullname": null,
+        "email": "",
+        "phone": null,
+        "position": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": "2026-03-23T19:17:41.672Z",
+        "is_superuser": false,
+        "username": "Petr.Ivanov",
+        "first_name": "Петр",
+        "last_name": "Иванов",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T09:44:25Z",
+        "fullname": "Иванов Петр Петрович",
+        "email": "Petr.Ivanov@company.ru",
+        "phone": "12345",
+        "position": "Начальник отдела разработки месторождений",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": "2026-03-23T15:11:35.378Z",
+        "is_superuser": false,
+        "username": "Ivan.Petrov",
+        "first_name": "Иван",
+        "last_name": "Петров",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T09:49:07Z",
+        "fullname": "Петров Иван Иванович",
+        "email": "Ivan.Petrov@company.ru",
+        "phone": "23456",
+        "position": "Начальник службы обеспечения геологической информацией",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Ivan.Sidorov",
+        "first_name": "Иван",
+        "last_name": "Сидоров",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T09:51:42Z",
+        "fullname": "Сидоров Иван Петрович",
+        "email": "Ivan.Sidorov@company.ru",
+        "phone": "34567",
+        "position": "Главный специалист",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Roman.Romanov",
+        "first_name": "Роман",
+        "last_name": "Романов",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T09:55:23Z",
+        "fullname": "Романов Роман Романович",
+        "email": "Roman.Romanov@company.ru",
+        "phone": "45678",
+        "position": "Главный специалист",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Olga.Romanenko",
+        "first_name": "Ольга",
+        "last_name": "Романенко",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T09:58:37Z",
+        "fullname": "Романенко Ольга Петровна",
+        "email": "Olga.Romanenko@company.ru",
+        "phone": "56789",
+        "position": "Главный специалист",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Rodion.Raskolnikov",
+        "first_name": "Родион",
+        "last_name": "Раскольников",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T10:01:45Z",
+        "fullname": "Раскольников Родион Романович",
+        "email": "Rodion.Raskolnikov@company.ru",
+        "phone": "67890",
+        "position": "Начальник отдела по учету оборудования",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Elena.Ivushkina",
+        "first_name": "Елена",
+        "last_name": "Ивушкина",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T10:11:37Z",
+        "fullname": "Ивушкина Елена Владимировна",
+        "email": "Elena.Ivushkina@company.ru",
+        "phone": "78901",
+        "position": "Начальник отдела информационных технологий",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Vera.Pushkina",
+        "first_name": "Вера",
+        "last_name": "Пушкина",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T10:16:05Z",
+        "fullname": "Пушкина Вера Петровна",
+        "email": "Vera.Pushkina@company.ru",
+        "phone": "89012",
+        "position": "Главный бухгалтер",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Ivan.Sorokin",
+        "first_name": "Иван",
+        "last_name": "Сорокин",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T10:42:55Z",
+        "fullname": "Сорокин Иван Васильевич",
+        "email": "Ivan.Sorokin@company.ru",
+        "phone": "90123",
+        "position": "Начальник технологической службы",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 11,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": "2026-03-28T06:08:40.876Z",
+        "is_superuser": false,
+        "username": "Iliya.Oblomov",
+        "first_name": "Илья",
+        "last_name": "Обломов",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T10:46:09Z",
+        "fullname": "Обломов Илья Ильич",
+        "email": "Iliya.Oblomov@company.ru",
+        "phone": "21234",
+        "position": "Начальник геологической службы",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 12,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": "2026-03-28T18:29:36.677Z",
+        "is_superuser": false,
+        "username": "Natalya.Rostova",
+        "first_name": "Наталья",
+        "last_name": "Ростова",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T11:11:56Z",
+        "fullname": "Ростова Наталья Ильинична",
+        "email": "Natalya.Rostova@company.ru",
+        "phone": "13456",
+        "position": "Ведущий геолог",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 13,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Andrey.Bolkonsky",
+        "first_name": "Андрей",
+        "last_name": "Болконский",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T11:14:14Z",
+        "fullname": "Болконский Андрей Николаевич",
+        "email": "Andrey.Bolkonsky@company.ru",
+        "phone": "22345",
+        "position": "Ведущий геолог",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 14,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Petr.Bezukhov",
+        "first_name": "Петр",
+        "last_name": "Безухов",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T11:15:27Z",
+        "fullname": "Безухов Петр Кириллович",
+        "email": "Petr.Bezukhov@company.ru",
+        "phone": "24567",
+        "position": "Ведущий технолог",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 15,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Elena.Kuragina",
+        "first_name": "Елена",
+        "last_name": "Курагина",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T11:16:47Z",
+        "fullname": "Курагина Елена Васильевна",
+        "email": "Elena.Kuragina@company.ru",
+        "phone": "25678",
+        "position": "Лаборант ХАЛ",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 16,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Vasily.Denisov",
+        "first_name": "Василий",
+        "last_name": "Денисов",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T11:17:48Z",
+        "fullname": "Денисов Василий Дмитриевич",
+        "email": "Vasily.Denisov@company.ru",
+        "phone": "26789",
+        "position": "Начальник лаборатории",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 17,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Natalya.Vlasova",
+        "first_name": "Наталья",
+        "last_name": "Власова",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T11:19:58Z",
+        "fullname": "Власова Наталья Владимировна",
+        "email": "Natalya.Vlasova@company.ru",
+        "phone": "27890",
+        "position": "Лаборант ХАЛ",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 18,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Olga.Pirogova",
+        "first_name": "Ольга",
+        "last_name": "Пирогова",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T11:22:05Z",
+        "fullname": "Пирогова Ольга Владимировна",
+        "email": "Olga.Pirogova@company.ru",
+        "phone": "20123",
+        "position": "Ведущий инженер",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 19,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Yulia.Ivashchenko",
+        "first_name": "Юлия",
+        "last_name": "Иващенко",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T11:23:39Z",
+        "fullname": "Иващенко Юлия Петровна",
+        "email": "Yulia.Ivashchenko@company.ru",
+        "phone": "31234",
+        "position": "Геолог",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 20,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Ilya.Romanenko",
+        "first_name": "Илья",
+        "last_name": "Романенко",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T11:24:58Z",
+        "fullname": "Романенко Илья Петрович",
+        "email": "Ilya.Romanenko@company.ru",
+        "phone": "32345",
+        "position": "Ведущий технолог",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 21,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Vasiliy.Stepochkin",
+        "first_name": "Василий",
+        "last_name": "Степочкин",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T12:41:44Z",
+        "fullname": "Степочкин Василий Петрович",
+        "email": "Vasiliy.Stepochkin@company.ru",
+        "phone": "33456",
+        "position": "Ведущий специалист ИБ",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 22,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": "2026-03-28T06:09:14.823Z",
+        "is_superuser": false,
+        "username": "Oleg.Orlov",
+        "first_name": "Олег",
+        "last_name": "Орлов",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T12:43:12Z",
+        "fullname": "Орлов Олег Олегович",
+        "email": "Oleg.Orlov@company.ru",
+        "phone": "35678",
+        "position": "Ведущий специалист ИБ",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 23,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Semen.Sokolov",
+        "first_name": "Семен",
+        "last_name": "Соколов",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-22T12:44:15Z",
+        "fullname": "Соколов Семен Игоревич",
+        "email": "Semen.Sokolov@company.ru",
+        "phone": "36789",
+        "position": "Главный специалист ИБ",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 24,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VDA3v0PW29AzcfV68lZP0P$Df0QUP+hAL6N0slsh8n+Zs3j4wTjgBY4d+BdCAkN0/Q=",
+        "last_login": "2026-03-28T16:35:12.665Z",
+        "is_superuser": false,
+        "username": "AdminSIA",
+        "first_name": "Ирина",
+        "last_name": "Судейкина",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-03-28T06:24:50Z",
+        "fullname": "Судейкина Ирина Александровна",
+        "email": "AdminSIA@company.ru",
+        "phone": null,
+        "position": null,
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+}
+]
