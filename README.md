@@ -1,14 +1,14 @@
-# Проект "Habit_tracker" - Трекер привычек
+# Проект "access_request" - Веб-приложение подачи заявок на предоставление доступа к информационным системам (ИС) 
 
 ## Описание:
- Проект "Habit_tracker" - это проект на Python, 
- передставляющи собой трекер привычек
+ Проект "access_request" - это проект на Python, 
+ передставляющий собой веб-приложение подачи заявок на предоставление доступа к информационным системам
  
  
 ## Установка:
  1. Клонируйте репозиторий:
  ```
- git clone https://github.com/Irina-Sudeykina/Habit_tracker.git
+ git clone https://github.com/Irina-Sudeykina/access_request.git
  
  ```
 
@@ -21,86 +21,136 @@
 
 ### Модель User: ###
 Модель представляет пользователя платформы, и имеет следующие свойства:<br>
+fullname - ФИО,<br>
 email - Email,<br>
 phone - Телефон,<br>
-tg_nick - Ник телеграмма<br>
-avatar - Аватар<br>
-tg_chat_id - Телеграм chat-id<br>
+position - Должность<br>
 
 
-### Контроллер UserCreateAPIView(CreateAPIView) ###
-Контроллер для для добавления пользователей
+### Контроллер CustomLoginView(AbstractUser) ###
+Контроллер для входа в сервис
+
+### Контроллер CustomLogoutView(LogoutView) ###
+Контроллер для выхода из сервиса
 
 
-### Модель Habit: ###
-Модель представляет привычки, и имеет следующие свойства:<br>
-owner - Пользователь<br>
-location - Место<br>
-time_habit - Время<br>
-action_habit - Действие<br>
-is_pleasant - Признак приятной привычки<br>
-linked_habit - Связанная привычка<br>
-frequency - Периодичность<br>
-reward - Вознаграждение<br>
-time_to_complete - Время на выполнение<br>
-is_published - Признак публичности<br>
+### Контекстный процессор user_groups(request) ###
+Контекстный процессор, добавляющий переменные о группах пользователя
 
 
-### Модель Reminder: ###
-Модель представляет напоминания, и имеет следующие свойства:<br>
-owner - Пользователь<br>
-habit - Привычка<br>
-date_reminder - Дата напоминания<br>
+### Модель InformationSystem: ###
+Модель представляет информационную систему, и имеет следующие свойства:<br>
+title - Наименование ИС<br>
+owner - Пользователь - владелец ИС<br>
 
 
-### Контроллер HabitCreateAPIView(CreateAPIView) ###
-Контроллер для создания привычек
-
-### Контроллер HabitListAPIView(ListAPIView) ###
-Контроллер для просмотра списка привычек
-
-### Контроллер HabitPublishedListAPIView(ListAPIView) ###
-Контроллер для просмотра списка публичных привычек
-
-### Контроллер HabitRetrieveAPIView(RetrieveAPIView) ###
-Контроллер для просмотра конкретной привычки
-
-### Контроллер HabitUpdateAPIView(UpdateAPIView) ###
-Контроллер для редактирования привычки
-
-### Контроллер HabitDestroyAPIView(DestroyAPIView) ###
-Контроллер для удаления привычки
+### Модель InformationSystemRole: ###
+Модель представляет роль в информационной системе, и имеет следующие свойства:<br>
+title - Наименование роли в ИС<br>
+information_system - Наименование ИС<br>
 
 
-### Контроллер ReminderCreateAPIView(CreateAPIView) ###
-Контроллер для создания напоминания
-
-### Контроллер ReminderListAPIView(ListAPIView) ###
-Контроллер для просмотра списка напоминаний
-
-### Контроллер ReminderRetrieveAPIView(RetrieveAPIView) ###
-Контроллер для просмотра конкретного напоминания
-
-### Контроллер ReminderUpdateAPIView(UpdateAPIView) ###
-Контроллер для редактирования напоминания
-
-### Контроллер ReminderDestroyAPIView(DestroyAPIView) ###
-Контроллер для удаления напоминания
+### Модель AccessRequest: ###
+Модель представляет заявку на доступ к информационной системе, и имеет следующие свойства:<br>
+information_system - Наименование ИС<br>
+owner - Пользователь подавший заявку<br>
+supervisor - Непосредственный руководитель<br>
+permission_level - Уровень доступа<br>
+information_system_role - Наименование роли в ИС<br>
+approved_status_supervisor_is - Статус согласования непосредственным руководителем<br>
+approved_status_owner_is - Статус согласования владельцем ИС<br>
+approved_status_ib_is - Статус согласования сотрудником ИБ<br>
 
 
-## Функции:
+### Контроллер AccessRequestListView(LoginRequiredMixin, ListView) ###
+Контроллер для просмотра списка заявок на доступ, созданных пользователем и статистика
 
-### Функция send_telegram_message(chat_id, message) ###
-Отправляет сообщение в телеграмм<br>
-Принимает: <br>
- chat_id - чат id<br>
- message - текст сообщения<br>
+### Контроллер AccessSuccessListView(ListAPIView) ###
+Контроллер для просмотра списка заявок на согласование
 
 
-## Задачи:
+### Контроллер ApprovalActionView(ApprovalPermissionMixin, SingleObjectMixin, View) ###
+Базовый контроллер для действий согласования
 
-### Задача send_reminder() ###
-Периодическая задача для рассылки напоминаний
+### Контроллер ApprovedSupervisorView(ApprovalActionView) ###
+Контроллер для согласования заявки непосредственным руководителем
+
+### Контроллер RejectedSupervisorView(ApprovalActionView) ###
+Контроллер для отклонения заявки непосредственным руководителем
+
+### Контроллер ApprovedOwnerView(ApprovalActionView) ###
+Контроллер для согласования заявки владельцем ИС
+
+### Контроллер RejectedOwnerView(ApprovalActionView) ###
+Контроллер для отклонения заявки владельцем ИС
+
+### Контроллер ApprovedIBView(ApprovalActionView) ###
+Контроллер для согласования заявки сотрудником ИБ
+
+### Контроллер RejectedIBView(ApprovalActionView) ###
+Контроллер для отклонения заявки сотрудником ИБ
+
+
+### Контроллер AccessRequestCreateView(CreateView) ###
+Контроллер для создания заявки на предоставление доступа
+
+
+### Контроллер InformationSystemListView(ListView) ###
+Контроллер для просмотра списка информационных систем
+
+### Контроллер InformationSystemCreateView(CreateView) ###
+Контроллер для создания информационной системы
+
+### Контроллер InformationSystemUpdateView(UpdateView) ###
+Контроллер для редактирования информационной системы
+
+### Контроллер InformationSystemDeleteView(DeleteView) ###
+Контроллер для удаления информационной системы
+
+
+### Контроллер InformationSystemRoleListView(ListView) ###
+Контроллер для просмотра списка ролей в информационных системах
+
+### Контроллер InformationSystemRoleCreateView(CreateView) ###
+Контроллер для создания роли в информационной системе
+
+### Контроллер InformationSystemRoleUpdateView(UpdateView) ###
+Контроллер для редактирования роли в информационной системе
+
+### Контроллер InformationSystemRoleDeleteView(DeleteView) ###
+Контроллер для удаления роли в информационной системе
+
+
+## Миксины:
+
+### Миксин ApprovalPermissionMixin(AccessMixin) ###
+Миксин для проверки прав на согласование заявки
+
+
+## Сервисы:
+
+### Сервис AccessRequestService ###
+Класс для получения статистики по заявкам
+
+ get_access_request_count() - Общее количество заявок<br>
+ get_active_access_request_count() - Количество активных заявок (теребующих согласования)<br>
+ get_approved_access_request_count() - Количество согласованных заявок<br>
+ get_rejected_access_request_count() - Количество отклоненных заявок<br>
+
+
+## Формы:
+
+### Форма StyleFormMixin ###
+Форма для красивого отображения
+
+### Форма AccessRequestForm(StyleFormMixin, forms.ModelForm) ###
+Форма для создания новой заявки на предоставления доступа
+
+### Форма InformationSystemForm(StyleFormMixin, forms.ModelForm) ###
+Форма для создания новой ИС
+
+### Форма InformationSystemRoleForm(StyleFormMixin, forms.ModelForm) ###
+Форма для создания новой роли в ИС
 
 
 ## Запуск сервера:
@@ -116,23 +166,12 @@ python manage.py runserver
 ## Предварительные условия
 - Установленная среда Docker и Docker Compose.<br>
 - Наличие рабочего экземпляра базы данных PostgreSQL.<br>
-- Установка необходимых инструментов для просмотра страниц API (например, Postman).<br>
 
 ## Создание и запуск проекта
 
-### Запуск через виртуальную машину:
-```
-ssh -i .ssh\adminsia adminsia@158.160.178.115
-cd ~/Habit_tracker
-```
-В браузере:
-```
-http://158.160.178.115/admin/
-```
-
 ### 1. Склонируйте репозиторий проекта:
 ```
-git clone https://github.com/Irina-Sudeykina/Habit_tracker.git
+git clone https://github.com/Irina-Sudeykina/access_request.git
 cd project
 ```
 
@@ -147,31 +186,17 @@ docker-compose exec web python manage.py migrate
 ```
 docker-compose ps
 ```
-Убедитесь, что все сервисы (web, db, redis, celery, beat) успешно запущены.
+Убедитесь, что все сервисы (web, db) успешно запущены.
 
 ### 4. Проверка работоспособности каждого сервиса:
 
-- **Web-сервер (Django/Django REST Framework):**
-Проект доступен по адресу: http://localhost:8000/. Проверьте страницу API, открыв браузер или отправляя HTTP-запросы через Postman.
+- **Web-сервер (Django):**
+Проект доступен по адресу: http://localhost:8000/. Проверьте страницу, открыв браузер.
 
 - **PostgreSQL:**
 Убедитесь, что база данных доступна. Можно использовать команду:
 ```
 docker-compose exec db psql -U postgres
-```
-
-- **Redis:**
-Проверить, запущен ли Redis, можно командой:
-```
-docker-compose exec redis redis-cli ping
-```
-Ожидаемый ответ: `PONG`.
-
-- **Celery/Celery Beat:**
-Логика Celery доступна через просмотр журналов:
-```
-docker-compose logs celery
-docker-compose logs beat
 ```
 
 ### 5. Прекращение работы и удаление контейнеров:
@@ -203,25 +228,19 @@ docker-compose logs
 ```
 docker-compose logs web
 docker-compose logs db
-docker-compose logs redis
-docker-compose logs celery
-docker-compose logs beat
 ```
 
 ### Загрузка данных из фикстур:
 ```
+docker-compose exec web python manage.py loaddata groups_fixture.json --format json
 docker-compose exec web python manage.py loaddata users_fixture.json --format json
-docker-compose exec web python manage.py loaddata habits_fixture.json --format json
+docker-compose exec web python manage.py loaddata mis_fixture.json --format json
 ```
 
 ### Выполнение кастомной команды - создание суперпользователя:
 ```
 docker-compose exec web python manage.py csu
 ```
-
-
-### Примеры запросов к API:
-Используйте Postman или curl для отправки GET/POST-запросов на конечные точки API, доступные по адресу http://localhost:8000/.
 
 ### Полезные команды:
 Команда	Описание
@@ -234,23 +253,16 @@ docker-compose exec container cmd	Выполнить команду внутри
 
 
  ## Тестирование:
-Проект покрыт тестами фреймворка DRF. Для их запуска выполните команду:
+Проект покрыт тестами. Для их запуска выполните команду:
 ```
 python manage.py test
 или
-coverage run manage.py test
-```
-Для выгрузки отчета о покрытии проекта тестами выполните команду:
-```
-coverage report
-или
-coverage html
+pytest
 ```
 
-## Документация:
-http://localhost:8000/swagger/
-или
-http://localhost:8000/redoc/
+Для просмотра отчета откройте файл htmlcov\index.html
+
+
 
 ## Лицензия:
 Проект распространяется под [лицензией MIT](LICENSE).

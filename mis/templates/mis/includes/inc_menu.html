@@ -1,0 +1,26 @@
+<div class="d-flex flex-column flex-md-row align-items-center mb-3 border-bottom fixed-top bg-white">
+    <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none ms-3"> 
+        <span class="fs-4">Сервис подачи заявок на предоставление доступа к ИС</span>
+    </a> 
+    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto"> 
+        {% if user.is_authenticated %}
+			{% if is_admin %}
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accessrequest_list' %}">Главная</a> 
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:informationsystem_list' %}">Информационные системы</a> 
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:informationsystemrole_list' %}">Роли в ИС</a> 
+			{% else %}
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accessrequest_list' %}">Главная</a> 
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accessrequest_create' %}">Подать заявку</a> 
+				<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mis:accesssuccess_list' %}">Заявки на согласование</a> 
+			{% endif %}
+            
+			<form method="post" action="{% url 'users:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="me-3 py-2 nav-link text-black"><u>Выход</u></button>
+            </form>
+        {% else %}       
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'users:login' %}">Вход</a>
+        {% endif %}
+
+    </nav>
+</div>

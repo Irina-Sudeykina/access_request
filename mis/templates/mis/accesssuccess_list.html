@@ -1,0 +1,102 @@
+{% extends 'mis/base.html' %}
+{% load my_tags %}
+
+{% block header %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <!-- <h1 class="display-4">Сервис подачи заявок на предоставление доступа к ИС</h1> -->
+    
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h3>Заявки на согласование</h3>
+        <br/>
+        <table class="table">
+          <thead>
+            <tr class="text-center align-middle">
+              <th scope="col">id</th>
+              <th scope="col">ФИО</th>
+              <th scope="col">Должность</th>
+              <th scope="col">Телефон</th>
+              <th scope="col">ИС</th>
+              <th scope="col">Уровень доступа</th>
+              <th scope="col">Роль в ИС</th>
+              <th scope="col">Согласование</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            {% for obj in object_list %}
+            <tr class="align-middle">
+              <th scope="row">{{ obj.id }}</th>
+              <td class="text-center">{{ obj.owner.fullname }}</td>
+              <td class="text-center">{{ obj.owner.position }}</td>
+              <td class="text-center">{{ obj.owner.phone }}</td>
+              <td class="text-center">{{ obj.information_system}}</td>
+              <td class="text-center">{{ obj.permission_level}}</td>
+              <td class="text-center">{{ obj.information_system_role}}</td>
+              <td class="text-center">
+				{% if obj.supervisor == user %}
+					<!-- Блок для руководителя -->
+					<form method="POST" action="{% url 'mis:approved_supervisor' obj.pk %}" style="display: inline-block;">
+						{% csrf_token %}
+						<button class="btn btn-outline-primary btn-sm" type="submit" 
+								onclick="return confirm('Вы уверены, что хотите согласовать эту заявку?');">
+							Согласовать
+						</button>
+					</form>
+					<form method="POST" action="{% url 'mis:rejected_supervisor' obj.pk %}" style="display: inline-block;">
+						{% csrf_token %}
+						<button class="btn btn-outline-danger btn-sm" type="submit" 
+								onclick="return confirm('Вы уверены, что хотите отклонить эту заявку?');">
+							Отклонить
+						</button>
+					</form>
+
+				{% elif obj.information_system.owner == user %}
+					<!-- Блок для владельца ИС -->
+					<form method="POST" action="{% url 'mis:approved_owner' obj.pk %}" style="display: inline-block;">
+						{% csrf_token %}
+						<button class="btn btn-outline-primary btn-sm" type="submit" 
+								onclick="return confirm('Вы уверены, что хотите согласовать заявку?');">
+							Согласовать
+						</button>
+					</form>
+					<form method="POST" action="{% url 'mis:rejected_owner' obj.pk %}" style="display: inline-block;">
+						{% csrf_token %}
+						<button class="btn btn-outline-danger btn-sm" type="submit" 
+								onclick="return confirm('Вы уверены, что хотите отклонить заявку?');">
+							Отклонить
+						</button>
+					</form>
+
+				{% elif is_in_ib_group %}
+					<!-- Новый блок для специалиста ИБ -->
+					<form method="POST" action="{% url 'mis:approved_ib' obj.pk %}" style="display: inline-block;">
+						{% csrf_token %}
+						<button class="btn btn-outline-primary btn-sm" type="submit" 
+								onclick="return confirm('Вы уверены, что хотите согласовать заявку?');">
+							Согласовать
+						</button>
+					</form>
+					<form method="POST" action="{% url 'mis:rejected_ib' obj.pk %}" style="display: inline-block;">
+						{% csrf_token %}
+						<button class="btn btn-outline-danger btn-sm" type="submit" 
+								onclick="return confirm('Вы уверены, что хотите отклонить заявку?');">
+							Отклонить
+						</button>
+					</form>
+
+				{% else %}
+					<!-- Если пользователь никто из вышеперечисленных -->
+					<span class="text-muted">Нет p на согласование</span>
+				{% endif %}
+			  </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

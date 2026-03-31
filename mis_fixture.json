@@ -1,0 +1,367 @@
+[
+{
+    "model": "mis.informationsystem",
+    "pk": 1,
+    "fields": {
+        "title": "OIS Production",
+        "owner": 2
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 2,
+    "fields": {
+        "title": "OIS-Ремонты",
+        "owner": 5
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 3,
+    "fields": {
+        "title": "OIS Pipe",
+        "owner": 4
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 4,
+    "fields": {
+        "title": "МРМ",
+        "owner": 3
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 5,
+    "fields": {
+        "title": "Web-портал ТИС Добыча",
+        "owner": 6
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 6,
+    "fields": {
+        "title": "ПНКТ",
+        "owner": 7
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 7,
+    "fields": {
+        "title": "ЭПОС",
+        "owner": 7
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 8,
+    "fields": {
+        "title": "Directum",
+        "owner": 8
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 9,
+    "fields": {
+        "title": "1С КСУ",
+        "owner": 9
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 10,
+    "fields": {
+        "title": "ЦДС Менеджер",
+        "owner": 6
+    }
+},
+{
+    "model": "mis.informationsystem",
+    "pk": 11,
+    "fields": {
+        "title": "ЦДС Пульт",
+        "owner": 6
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 1,
+    "fields": {
+        "title": "Пользователь",
+        "information_system": 1
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 2,
+    "fields": {
+        "title": "Геолог ЦДНГ",
+        "information_system": 2
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 3,
+    "fields": {
+        "title": "Технолог ЦДНГ",
+        "information_system": 2
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 4,
+    "fields": {
+        "title": "Согласование",
+        "information_system": 2
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 5,
+    "fields": {
+        "title": "Отдел супервайзинга по Т и КРС",
+        "information_system": 2
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 6,
+    "fields": {
+        "title": "Полевой супервайзер",
+        "information_system": 2
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 7,
+    "fields": {
+        "title": "Диспетчер",
+        "information_system": 3
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 8,
+    "fields": {
+        "title": "Технолог по вводу данных",
+        "information_system": 3
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 9,
+    "fields": {
+        "title": "Наблюдатель",
+        "information_system": 3
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 10,
+    "fields": {
+        "title": "Редактор структуры сети",
+        "information_system": 3
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 11,
+    "fields": {
+        "title": "Геолог ЦДНГ",
+        "information_system": 4
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 12,
+    "fields": {
+        "title": "Технолог ЦДНГ",
+        "information_system": 4
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 13,
+    "fields": {
+        "title": "Лаборант ХАЛ",
+        "information_system": 4
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 14,
+    "fields": {
+        "title": "Только чтение",
+        "information_system": 4
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 15,
+    "fields": {
+        "title": "Пользователь",
+        "information_system": 5
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 16,
+    "fields": {
+        "title": "Пользователь",
+        "information_system": 6
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 17,
+    "fields": {
+        "title": "Пользователь",
+        "information_system": 7
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 18,
+    "fields": {
+        "title": "Пользователь",
+        "information_system": 8
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 19,
+    "fields": {
+        "title": "Бухгалтер",
+        "information_system": 9
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 20,
+    "fields": {
+        "title": "Главный бухгалтер",
+        "information_system": 9
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 21,
+    "fields": {
+        "title": "Кладовщик",
+        "information_system": 9
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 22,
+    "fields": {
+        "title": "Куратор",
+        "information_system": 9
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 23,
+    "fields": {
+        "title": "МСФО",
+        "information_system": 9
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 24,
+    "fields": {
+        "title": "МТО (Статьи КПТР, МВЗ)",
+        "information_system": 9
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 25,
+    "fields": {
+        "title": "Только просмотр",
+        "information_system": 9
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 26,
+    "fields": {
+        "title": "Учет МТР и Спецодежды",
+        "information_system": 9
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 27,
+    "fields": {
+        "title": "Финансист",
+        "information_system": 9
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 28,
+    "fields": {
+        "title": "Пользователь",
+        "information_system": 10
+    }
+},
+{
+    "model": "mis.informationsystemrole",
+    "pk": 29,
+    "fields": {
+        "title": "Пользователь",
+        "information_system": 11
+    }
+},
+{
+    "model": "mis.accessrequest",
+    "pk": 1,
+    "fields": {
+        "created_at": "2026-03-22",
+        "information_system": 4,
+        "owner": 12,
+        "supervisor": 11,
+        "permission_level": "WRITE",
+        "information_system_role": 11,
+        "approved_status_supervisor_is": "approved",
+        "approved_status_owner_is": "approved",
+        "approved_status_ib_is": "approved"
+    }
+},
+{
+    "model": "mis.accessrequest",
+    "pk": 2,
+    "fields": {
+        "created_at": "2026-03-22",
+        "information_system": 1,
+        "owner": 12,
+        "supervisor": 11,
+        "permission_level": "READ",
+        "information_system_role": 1,
+        "approved_status_supervisor_is": "approved",
+        "approved_status_owner_is": "approved",
+        "approved_status_ib_is": "pending"
+    }
+},
+{
+    "model": "mis.accessrequest",
+    "pk": 3,
+    "fields": {
+        "created_at": "2026-03-26",
+        "information_system": 2,
+        "owner": 12,
+        "supervisor": 11,
+        "permission_level": "READ",
+        "information_system_role": 2,
+        "approved_status_supervisor_is": "approved",
+        "approved_status_owner_is": "pending",
+        "approved_status_ib_is": "pending"
+    }
+}
+]
